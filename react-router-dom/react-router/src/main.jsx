@@ -45,7 +45,7 @@ const router = createBrowserRouter(
 
         <Route  path='/' element={<Home/>}/> 
         {/* nested routes      /about/profile   */}
-        <Route path='/about' element={<About/>} />x
+        <Route path='/about' element={<About/>} />
 
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/github' element={<Github/>} />
