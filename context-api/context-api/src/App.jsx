@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Todoprovider } from "./context";
 
 
@@ -12,8 +12,30 @@ function App() {
 
   const updateTodo = (id, todo)=> {
     setTodos((prev) => prev.map((prevTodo)=> (prevTodo.id === id ? todo : prevTodo )))
+
+   
+  }
+
+  const deleteTodo = (id)=> {
+      setTodos((prev)=> prev.filter((todo)=> todo.id != id))
   }
   
+
+  const toggleComplete = (id)=> {
+      setTodos((prev)=> prev.map((todo)=> todo === id ? {...todo, completed : !todo.completed } : todo))
+  }
+
+  //localstorage
+
+  useEffect(()=> {
+
+    const todos = JSON.parse(localStorage.getItem("todos"))
+
+    if(todos && todos.length > 0) {
+
+    }
+  },)
+
 
   return (
     <Todoprovider value={{todos, addTodo,updateTodo, deleteTodo, toggleComplete}}>
