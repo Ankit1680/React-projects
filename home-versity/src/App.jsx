@@ -22,9 +22,13 @@ function App() {
     setPriceValue(e.target.value);
   };
 
+  const genderChangeHandler = (e) => {
+    setGenderVal(e.target.value);
+  };
+
   return (
     <>
-      <div className="search w-[80%] h-20  flex justify-start items-center gap-4 pl-36 bg-zinc-100  shadow-xl rounded-xl m-auto my-4">
+      <div className="search w-full h-20  flex justify-start items-center gap-4 pl-36 bg-zinc-100  shadow-xl rounded-xl m-auto my-4">
         <input
           type="text"
           value={inputText}
@@ -45,6 +49,29 @@ function App() {
         >
           Search
         </button>
+
+        <div className="gender ">
+          <select
+            value={genderVal}
+            onChange={genderChangeHandler}
+            className="px-2 py-1  border-blue-300 border-2 rounded-lg"
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <button
+            onClick={() => {
+              const genderFilter = listedProperties.filter(
+                (item) => item.gender === genderVal
+              );
+              setFilterData(genderFilter);
+            }}
+            className="border-pink-400 border-2 px-3 py-1 rounded-lg text-blue-400 ml-2 hover:bg-black hover:text-white duration-700 ease-in-out"
+          >
+            Filter by Gender
+          </button>
+        </div>
 
         <button
           className="border-blue-500 border-2 font-semibold shadow-lg px-4 py-1 ml-5 rounded-lg hover:bg-black hover:text-white duration-700 ease-in-out"
