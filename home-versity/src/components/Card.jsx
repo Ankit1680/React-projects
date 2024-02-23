@@ -4,13 +4,12 @@ import { RiStarSFill } from "react-icons/ri";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { PiBowlFoodDuotone } from "react-icons/pi";
 
-
 function Card({ data }) {
   return (
     <>
-      <div className="relative w-[250px] h-[320px] bg-white m-4 rounded-tr-3xl  rounded-bl-3xl border-2 pb-2 shadow-md shadow-zinc-400">
+      <div className="relative w-[250px] h-[380px] bg-white m-4 rounded-tr-3xl  rounded-bl-3xl border-2 pb-2 shadow-md shadow-zinc-400">
         <div className=" absolute w-10 h-5 bg-black rounded-tl-lg rounded-br-lg mt-2">
-          {data.isMale ? (
+          {data.gender == "Male" ? (
             <h3 className="text-white text-sm  text-center">M</h3>
           ) : (
             <h3 className="text-white text-sm  text-center">F</h3>
@@ -26,6 +25,9 @@ function Card({ data }) {
 
         <div className="bottom w-full h-[60%]    rounded-bl-3xl p-2 font-sans">
           <h1 className="text-lg font-semibold font-['gilroy']">{data.name}</h1>
+          <h1 className="text-lg font-semibold text-blue-600 my-1">
+            Rs. {data.price}/-
+          </h1>
           <p className="text-sm tracking-tighter">{data.desc}</p>
           <div className="flex items-center g-2 shadow-xl">
             <div className="flex items-center px-1 border-2 border-blue-300 rounded-lg font-['gilroy']">
@@ -63,8 +65,6 @@ function Card({ data }) {
           </div>
         </div>
       </div>
-
-      
     </>
   );
 }
