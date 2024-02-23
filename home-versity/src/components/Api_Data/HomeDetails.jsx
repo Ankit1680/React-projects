@@ -1,16 +1,42 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { data } from "../details";
+import { useNavigate, useParams } from "react-router-dom";
+import { data } from "../details.js";
 
-function HomeDetails({ data }) {
+function HomeDetails() {
+  //recive the dynamic data in useParams()
   const { userid } = useParams();
+  const showdata = data[userid]; //take the data of specific home throough userid
+
+  //go back functionality
+  const navigate = useNavigate();
+
+  const goBackHandler = () => {
+    navigate("/hostel");
+    //navigate(-1);
+  };
+
+  console.log(showdata);
 
   return (
-    <div className="w-full h-screen ">
-      <h1 className="text-pink-400 font-semibold text-center  ">
-        Hotels : {userid}
-      </h1>
-      <h1>Name: </h1>
+    <div className="w-full h-screen  ">
+      <div className="top w-[80%] h-1/2 m-auto">
+        <img
+          className="w-full h-full object-cover object-center"
+          src={showdata.img}
+          alt=""
+        />
+      </div>
+
+      <div className="bottom  w-[80%] h-1/2 m-auto flex flex-col items-center">
+        <h1 className="text-2xl font-semibold text-center">{showdata.name}</h1>
+
+        <button
+          onClick={goBackHandler}
+          className="bg-blue-500 rounded p-2 text-white font-semibold text-center"
+        >
+          Previous
+        </button>
+      </div>
     </div>
   );
 }
