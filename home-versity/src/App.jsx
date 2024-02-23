@@ -56,7 +56,7 @@ function App() {
             onChange={genderChangeHandler}
             className="px-2 py-1  border-blue-300 border-2 rounded-lg"
           >
-            <option value="">Select Gender</option>
+            {/* <option value="">Select Gender</option> */}
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
